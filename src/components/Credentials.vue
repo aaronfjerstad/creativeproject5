@@ -82,7 +82,7 @@ export default {
 .error {
   margin-left:1rem;
   font-size:1.5rem;
-  color: red;
+  line-height: 2.5rem;
 }
 
 .overflow {

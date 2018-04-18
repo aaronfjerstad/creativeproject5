@@ -120,7 +120,7 @@ const verifyToken = (req, res, next) => {
 const validateCredentials = (req) => {
   console.log(req.body.email);
   console.log(req.body.password);
-  if(!req.body.email || req.body.email.trim().length === 0 || !validator.validate(req.body.email)) {
+  if(!req.body.email || req.body.email.trim().length === 0 || !validator.validate(req.body.email.trim())) {
     return "Invalid email";
   }
   if(!req.body.password || req.body.password.trim().length < 1) {
@@ -166,7 +166,7 @@ app.post("/api/register", (req,res)=>{
             let token = jwt.sign({id:user.id}, jwtSecret, {expiresIn:300});
             var link = req.protocol + '://' + req.get('host') + "/api/confirm/" + token;
             sendLink(email, link);
-            res.status(200).json({ error:"Five-minute confirmation email sent. Register credentials again for a new email. Registering after confirmation will do nothing." });
+            res.status(200).json({ error:"Check your email. Confirmation link expires in 5 minutes. Register again for a new email, but don't worry: nobody can register your email after you confirm." });
           }).catch(error=>{
             console.log(error);
             res.status(400).json({ error:"Could not register user" });
@@ -184,7 +184,7 @@ app.post("/api/register", (req,res)=>{
         let token = jwt.sign({id:user.id}, jwtSecret, {expiresIn:300});
         var link = req.protocol + '://' + req.get('host') + "/api/confirm/" + token;
         sendLink(email, link);
-        res.status(200).json({ error:"Five-minute confirmation email sent. Register credentials again for a new email. Registering after confirmation will do nothing." });
+        res.status(200).json({ error:"Check your email. Confirmation link expires in 5 minutes. Register again for a new email, but don't worry: nobody can register your email after you confirm." });
       });
     }
 

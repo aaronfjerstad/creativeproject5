@@ -85,6 +85,7 @@ export default {
   padding:1rem;
 }
 .textarea {
+  padding: 1rem;
   resize: none;
   width: 100%;
   flex-grow:1;
