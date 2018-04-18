@@ -274,8 +274,8 @@ app.post("/api/login", (req,res)=>{
 
     //If the user has not been confirmed, don't log in.
     else if(user.confirmed === '0') {
-      console.log("User was not confirmed.");
-      res.status(400).json({error:"User was not confirmed."});
+      console.log("User has not been confirmed.");
+      res.status(400).json({error:"User has not been confirmed."});
     }
 
     //Otherwise evaluate password
