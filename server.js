@@ -166,7 +166,7 @@ app.post("/api/register", (req,res)=>{
             let token = jwt.sign({id:user.id}, jwtSecret, {expiresIn:300});
             var link = req.protocol + '://' + req.get('host') + "/api/confirm/" + token;
             sendLink(email, link);
-            res.status(200).json({ error:"Confirmation email was sent, and will expire in five minutes. Register credentials again for a new email. Registering after confirmation will do nothing." });
+            res.status(200).json({ error:"Confirmation email was sent, and will expire in five minutes. Register credentials again for a new email, but don't worry: nobody can register as a confirmed user." });
           }).catch(error=>{
             console.log(error);
             res.status(400).json({ error:"Could not register user" });
@@ -184,7 +184,7 @@ app.post("/api/register", (req,res)=>{
         let token = jwt.sign({id:user.id}, jwtSecret, {expiresIn:300});
         var link = req.protocol + '://' + req.get('host') + "/api/confirm/" + token;
         sendLink(email, link);
-        res.status(200).json({ error:"Confirmation email was sent, and will expire in five minutes. Register credentials again for a new email. Registering after confirmation will do nothing." });
+        res.status(200).json({ error:"Confirmation email was sent, and will expire in five minutes. Register credentials again for a new email, but don't worry: nobody can register as a confirmed user." });
       });
     }
 
