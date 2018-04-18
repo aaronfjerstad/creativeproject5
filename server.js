@@ -257,7 +257,7 @@ app.post("/api/login", (req,res)=>{
   console.log("Credentials usable");
 
   //Credentials
-  email = req.body.email.trim();
+  email = req.body.email.trim().toLowerCase();
   password = req.body.password;
   console.log("Normalized credentials");
 
